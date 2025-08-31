@@ -838,9 +838,10 @@ section {
         position: static;
         transform: none;
         width: 100%;
-        margin: 1rem 0;
+        margin: 0;
         padding: 1rem;
         min-height: auto;
+        order: -1;
     }
     
     /* Features Grid */

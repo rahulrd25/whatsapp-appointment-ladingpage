@@ -196,10 +196,11 @@ function openZohoForm() {
     heroButton.style.display = 'none';
     heroFormContainer.style.display = 'block';
     
-    // Scroll to top smoothly
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Scroll to hero section smoothly, positioning form in the center
+    const heroSection = document.querySelector('.hero');
+    heroSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
     });
     
     // Load the PingBook form iframe
