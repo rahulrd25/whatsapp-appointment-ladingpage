@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PingBook - Smart AI Appointment Assistant on WhatsApp - Automate Bookings & Customer Engagement</title>
+    <meta name="description" content="PingBook - Smart AI appointment assistant on WhatsApp. Automate bookings, reminders & customer engagement. Save time, reduce no-shows, grow revenue for SMBs in India.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Zoho Forms Script -->
+    <script type="text/javascript">
+        function zforms_open_window(url, height, width){
+            var leftPos = 0;
+            var topPos = 0;
+            if(screen){
+                leftPos = (screen.width - width) / 2;
+                topPos = (screen.height - height) / 2;
+            }
+            window.open(url, null, 'width='+width+',height='+height+',left='+leftPos+',top='+topPos+', toolbar=0, location=0, status=1, scrollbars=1, resizable=1');
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">💬</span>
+                <span class="logo-text">PingBook</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <button class="cta-button" onclick="openZohoForm()">Join Wishlist</button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Meet
+                    <span class="highlight">
+                        <span class="pingbook-bubble">PingBook</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    Let your customers book appointments, ask questions, and get support 24/7 - all inside WhatsApp. 
+                    Your business gets an AI assistant that never sleeps, with zero new apps to download.
+                </p>
+                <div class="hero-cta">
+                    <button class="primary-button" id="hero-cta-button" onclick="openZohoForm()">
+                        Join Wishlist
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">AI Agent</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">₹999</span>
+                        <span class="stat-label">Starting Price</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">14 Days</span>
+                        <span class="stat-label">Free Trial</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <img src="images/whatsapp_ad.jpg" alt="PingBook - Smart appointment scheduling" class="hero-main-image">
+                </div>
+                <!-- Hero Form Container - appears on right side -->
+                <div id="hero-form-container" class="hero-form-container" style="display: none;">
+                    <div class="form-header">
+                        <button class="close-form-btn" onclick="closeZohoForm()">&times;</button>
+                    </div>
+                    <div class="form-content">
+                        <p>Form will be added here later</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose PingBook?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Smart AI Assistant</h3>
+                    <p>PingBook talks like a real person in Hindi and English</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>WhatsApp Chat</h3>
+                    <p>Customers chat directly on WhatsApp - no new app to download</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Auto Booking</h3>
+                    <p>AI automatically books appointments and sends confirmations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>24/7 Available</h3>
+                    <p>PingBook works day and night, never takes breaks</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>More Business</h3>
+                    <p>Never miss customers - PingBook handles everything automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🇮🇳</div>
+                    <h3>Made for India</h3>
+                    <p>Understands Indian customers and business culture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect WhatsApp</h3>
+                        <p>Link your WhatsApp Business in 2 minutes</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Train PingBook</h3>
+                        <p>Tell PingBook about your business, services, and timings</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>PingBook Works for You</h3>
+                        <p>PingBook chats with customers and books appointments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <h2 class="section-title">Trusted by Indian Businesses</h2>
+            <p class="section-subtitle">Join thousands of businesses already using PingBook to grow their customer base</p>
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <div class="use-case-icon">🏥</div>
+                    <h3>Healthcare</h3>
+                    <p>Doctors, clinics, hospitals, diagnostic centers</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">💇‍♀️</div>
+                    <h3>Beauty & Wellness</h3>
+                    <p>Salons, spas, wellness centers, fitness studios</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">🎓</div>
+                    <h3>Education</h3>
+                    <p>Coaching classes, tutors, training institutes</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">🏢</div>
+                    <h3>Professional Services</h3>
+                    <p>Consultants, lawyers, accountants, real estate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">₹999<span>/month</span></div>
+                    <ul>
+                        <li>Single business location</li>
+                        <li>Up to 100 bookings/month</li>
+                        <li>Basic AI agent</li>
+                        <li>WhatsApp integration</li>
+                                              <li>14-day free trial</li>
+                  </ul>
+                  <button class="pricing-button" onclick="openZohoForm()">Join Wishlist</button>
+              </div>
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">₹1999<span>/month</span></div>
+                    <ul>
+                        <li>Multiple staff members</li>
+                        <li>Unlimited bookings</li>
+                        <li>Advanced AI features</li>
+                        <li>Custom branding</li>
+                        <li>Priority support</li>
+                                              <li>Business analytics</li>
+                  </ul>
+                  <button class="pricing-button" onclick="openZohoForm()">Join Wishlist</button>
+              </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li>Multiple locations</li>
+                        <li>Payment integration</li>
+                        <li>Dedicated manager</li>
+                                              <li>Custom AI training</li>
+                  </ul>
+                  <button class="pricing-button" onclick="openZohoForm()">Join Wishlist</button>
+              </div>
+            </div>
+        </div>
+    </section>
+
+        
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>WhatsApp AI Agent</h4>
+                    <p>Your smart AI assistant on WhatsApp. Books appointments, answers questions, and grows your business 24/7.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#how-it-works">How It Works</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 vaatify.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+
+</body>
+</html>
