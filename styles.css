@@ -393,6 +393,56 @@ section {
     font-size: 0.95rem;
 }
 
+/* Pricing Banner */
+.pricing-banner {
+    background: linear-gradient(135deg, #1FAF38 0%, #178A2E 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.pricing-banner-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.pricing-banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.pricing-banner-price {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.pricing-banner-price .price {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.pricing-banner .cta-button {
+    background: white;
+    color: #1FAF38 !important;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid #1FAF38;
+    font-weight: 600;
+}
+
+.pricing-banner .cta-button:hover {
+    background: #1FAF38;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 /* Pricing */
 .pricing {
     background: #f8fafc;
@@ -887,6 +937,23 @@ section {
     .step {
         padding: 1.5rem;
     }
+    
+    /* Pricing Banner */
+    .pricing-banner {
+        padding: 3rem 0;
+    }
+    
+    .pricing-banner-content h2 {
+        font-size: 2rem;
+    }
+    
+    .pricing-banner-content p {
+        font-size: 1.1rem;
+    }
+    
+    .pricing-banner-price {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -935,5 +1002,27 @@ section {
     
     .use-case-icon {
         font-size: 2.5rem;
+    }
+    
+    /* Pricing Banner */
+    .pricing-banner {
+        padding: 2rem 0;
+    }
+    
+    .pricing-banner-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .pricing-banner-content p {
+        font-size: 1rem;
+    }
+    
+    .pricing-banner-price {
+        font-size: 1.2rem;
+    }
+    
+    /* Region Selector - Hidden */
+    #region-selector {
+        display: none !important;
     }
 }

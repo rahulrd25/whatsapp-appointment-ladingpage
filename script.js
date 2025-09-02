@@ -1,5 +1,134 @@
+// Dynamic pricing based on user location
+const pricingData = {
+    'IN': { currency: '₹', price: '999', symbol: '₹999/month' },
+    'US': { currency: '$', price: '5', symbol: '$5/month' },
+    'GB': { currency: '£', price: '5', symbol: '£5/month' },
+    'AE': { currency: 'AED', price: '99', symbol: 'AED 99/month' },
+    'default': { currency: '$', price: '5', symbol: '$5/month' }
+};
+
+function detectUserLocation() {
+    // Try to get country from browser's timezone
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let country = 'default';
+    
+    // More comprehensive timezone detection
+    if (timezone.includes('Asia/Kolkata') || timezone.includes('Asia/Calcutta') || 
+        timezone.includes('Asia/Mumbai') || timezone.includes('Asia/Delhi') ||
+        timezone.includes('Asia/Chennai') || timezone.includes('Asia/Bangalore')) {
+        country = 'IN';
+    } else if (timezone.includes('America/New_York') || timezone.includes('America/Los_Angeles') ||
+               timezone.includes('America/Chicago') || timezone.includes('America/Denver')) {
+        country = 'US';
+    } else if (timezone.includes('Europe/London') || timezone.includes('Europe/Dublin')) {
+        country = 'GB';
+    } else if (timezone.includes('Asia/Dubai') || timezone.includes('Asia/Abu_Dhabi')) {
+        country = 'AE';
+    }
+    
+    // Fallback: Try to detect from browser language
+    if (country === 'default') {
+        const language = navigator.language || navigator.userLanguage;
+        if (language.includes('en-IN') || language.includes('hi-IN')) {
+            country = 'IN';
+        } else if (language.includes('en-US')) {
+            country = 'US';
+        } else if (language.includes('en-GB')) {
+            country = 'GB';
+        } else if (language.includes('ar-AE')) {
+            country = 'AE';
+        }
+    }
+    
+    return country;
+}
+
+function addRegionSelector() {
+    // Create a hidden region selector for debugging (optional)
+    const regionSelector = document.createElement('div');
+    regionSelector.id = 'region-selector';
+    regionSelector.innerHTML = `
+        <select id="region-dropdown" onchange="changeRegion(this.value)" style="display: none;">
+            <option value="IN">🇮🇳 India (₹999-₹1998)</option>
+            <option value="US">🇺🇸 USA ($5-$10)</option>
+            <option value="GB">🇬🇧 UK (£5-£10)</option>
+            <option value="AE">🇦🇪 UAE (AED 99-198)</option>
+        </select>
+    `;
+    
+    // Set the current region
+    const currentCountry = detectUserLocation();
+    const select = regionSelector.querySelector('select');
+    select.value = currentCountry;
+    
+    // Add to page (hidden)
+    document.body.appendChild(regionSelector);
+}
+
+function changeRegion(country) {
+    updatePricing(country);
+    
+    // Show a brief notification only if manually changed
+    if (document.getElementById('region-dropdown').style.display !== 'none') {
+        showNotification(`Pricing updated for ${pricingData[country].currency} region!`, 'success');
+    }
+}
+
+function updatePricing(country) {
+    const pricing = pricingData[country] || pricingData['default'];
+    
+    // Update hero section pricing
+    const heroPrice = document.querySelector('.hero-stats .stat-value');
+    if (heroPrice) {
+        heroPrice.textContent = pricing.symbol;
+    }
+    
+    // Update pricing cards
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach(card => {
+        const priceElement = card.querySelector('.price');
+        const currencyElement = card.querySelector('.currency');
+        
+        if (priceElement && currencyElement) {
+            if (card.classList.contains('starter')) {
+                currencyElement.textContent = pricing.currency;
+                priceElement.textContent = pricing.price;
+            } else if (card.classList.contains('pro')) {
+                // Pro plan pricing (2x starter)
+                const proPrice = parseInt(pricing.price) * 2;
+                currencyElement.textContent = pricing.currency;
+                priceElement.textContent = proPrice.toString();
+            }
+        }
+    });
+    
+    // Update pricing banner
+    const pricingBanner = document.querySelector('.pricing-banner .price');
+    if (pricingBanner) {
+        pricingBanner.textContent = pricing.symbol;
+    }
+    
+    // Update section title to be universal
+    const sectionTitle = document.querySelector('#pricing .section-title');
+    if (sectionTitle) {
+        sectionTitle.textContent = 'Simple Pricing';
+    }
+    
+    // Update pricing banner text to be universal
+    const pricingBannerText = document.querySelector('.pricing-banner-content p');
+    if (pricingBannerText) {
+        pricingBannerText.textContent = 'Join thousands of businesses worldwide using PingBook';
+    }
+}
+
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Set up dynamic pricing
+    const userCountry = detectUserLocation();
+    updatePricing(userCountry);
+    
+    // Add region selector functionality
+    addRegionSelector();
     // Smooth scroll for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
