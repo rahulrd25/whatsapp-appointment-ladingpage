@@ -1,10 +1,45 @@
 // Dynamic pricing based on user location
 const pricingData = {
-    'IN': { currency: '₹', price: '999', symbol: '₹999/month' },
-    'US': { currency: '$', price: '5', symbol: '$5/month' },
-    'GB': { currency: '£', price: '5', symbol: '£5/month' },
-    'AE': { currency: 'AED', price: '99', symbol: 'AED 99/month' },
-    'default': { currency: '$', price: '5', symbol: '$5/month' }
+    'IN': { 
+        currency: '₹', 
+        currencySymbol: '₹', 
+        price: '999', 
+        symbol: '₹999/month',
+        currencyCode: 'INR',
+        locale: 'en-IN'
+    },
+    'US': { 
+        currency: '$', 
+        currencySymbol: '$', 
+        price: '5', 
+        symbol: '$5/month',
+        currencyCode: 'USD',
+        locale: 'en-US'
+    },
+    'GB': { 
+        currency: '£', 
+        currencySymbol: '£', 
+        price: '5', 
+        symbol: '£5/month',
+        currencyCode: 'GBP',
+        locale: 'en-GB'
+    },
+    'AE': { 
+        currency: 'AED', 
+        currencySymbol: 'د.إ', 
+        price: '99', 
+        symbol: 'د.إ 99/month',
+        currencyCode: 'AED',
+        locale: 'ar-AE'
+    },
+    'default': { 
+        currency: '$', 
+        currencySymbol: '$', 
+        price: '5', 
+        symbol: '$5/month',
+        currencyCode: 'USD',
+        locale: 'en-US'
+    }
 };
 
 function detectUserLocation() {
@@ -43,6 +78,23 @@ function detectUserLocation() {
     return country;
 }
 
+function formatCurrency(amount, currencyCode, locale = 'en-US') {
+    // Use Intl.NumberFormat for proper currency formatting
+    const formatter = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currencyCode,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    });
+    
+    // For currencies that don't have proper Intl support, use manual formatting
+    if (currencyCode === 'AED') {
+        return `د.إ ${amount}`;
+    }
+    
+    return formatter.format(amount);
+}
+
 function addRegionSelector() {
     // Create a hidden region selector for debugging (optional)
     const regionSelector = document.createElement('div');
@@ -52,7 +104,7 @@ function addRegionSelector() {
             <option value="IN">🇮🇳 India (₹999-₹1998)</option>
             <option value="US">🇺🇸 USA ($5-$10)</option>
             <option value="GB">🇬🇧 UK (£5-£10)</option>
-            <option value="AE">🇦🇪 UAE (AED 99-198)</option>
+            <option value="AE">🇦🇪 UAE (د.إ 99-198)</option>
         </select>
     `;
     
@@ -91,12 +143,12 @@ function updatePricing(country) {
         
         if (priceElement && currencyElement) {
             if (card.classList.contains('starter')) {
-                currencyElement.textContent = pricing.currency;
+                currencyElement.textContent = pricing.currencySymbol;
                 priceElement.textContent = pricing.price;
             } else if (card.classList.contains('pro')) {
                 // Pro plan pricing (2x starter)
                 const proPrice = parseInt(pricing.price) * 2;
-                currencyElement.textContent = pricing.currency;
+                currencyElement.textContent = pricing.currencySymbol;
                 priceElement.textContent = proPrice.toString();
             }
         }

@@ -504,6 +504,13 @@ section {
     margin-bottom: 2rem;
 }
 
+.currency {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1FAF38;
+    margin-right: 0.2rem;
+}
+
 .price span {
     font-size: 1rem;
     color: #64748b;
