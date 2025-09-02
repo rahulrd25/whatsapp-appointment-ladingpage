@@ -11,32 +11,32 @@ const pricingData = {
     'US': { 
         currency: '$', 
         currencySymbol: '$', 
-        price: '5', 
-        symbol: '$5/month',
+        price: '12', 
+        symbol: '$12/month',
         currencyCode: 'USD',
         locale: 'en-US'
     },
     'GB': { 
         currency: '£', 
         currencySymbol: '£', 
-        price: '5', 
-        symbol: '£5/month',
+        price: '9', 
+        symbol: '£9/month',
         currencyCode: 'GBP',
         locale: 'en-GB'
     },
     'AE': { 
         currency: 'AED', 
         currencySymbol: 'د.إ', 
-        price: '99', 
-        symbol: 'د.إ 99/month',
+        price: '45', 
+        symbol: 'د.إ 45/month',
         currencyCode: 'AED',
         locale: 'ar-AE'
     },
     'default': { 
         currency: '$', 
         currencySymbol: '$', 
-        price: '5', 
-        symbol: '$5/month',
+        price: '12', 
+        symbol: '$12/month',
         currencyCode: 'USD',
         locale: 'en-US'
     }
@@ -139,17 +139,14 @@ function updatePricing(country) {
     const pricingCards = document.querySelectorAll('.pricing-card');
     pricingCards.forEach(card => {
         const priceElement = card.querySelector('.price');
-        const currencyElement = card.querySelector('.currency');
         
-        if (priceElement && currencyElement) {
+        if (priceElement) {
             if (card.classList.contains('starter')) {
-                currencyElement.textContent = pricing.currencySymbol;
-                priceElement.textContent = pricing.price;
+                priceElement.innerHTML = `${pricing.currencySymbol}${pricing.price}<span>/month</span>`;
             } else if (card.classList.contains('pro')) {
                 // Pro plan pricing (2x starter)
                 const proPrice = parseInt(pricing.price) * 2;
-                currencyElement.textContent = pricing.currencySymbol;
-                priceElement.textContent = proPrice.toString();
+                priceElement.innerHTML = `${pricing.currencySymbol}${proPrice}<span>/month</span>`;
             }
         }
     });
